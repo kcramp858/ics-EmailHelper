@@ -1,0 +1,54 @@
+/* CSS for the commands.html */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+/* Styling for the columns */
+#emailMetadataColumn, #userInputColumn {
+    float: left;
+    width: 50%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+/* Styling for the email metadata column */
+#emailMetadataColumn {
+    border-right: 1px solid #ddd;
+}
+
+/* Styling for the user input column */
+#userInputColumn {
+    padding-left: 20px;
+}
+
+/* Styling for the text boxes */
+#explanationBox, #tasksBox {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    resize: vertical;
+}
+
+/* Styling for the buttons */
+#submitButton, #cancelButton {
+    padding: 10px 20px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+#cancelButton {
+    background-color: #f44336;
+}
+
+/* Hover effect for the buttons */
+#submitButton:hover, #cancelButton:hover {
+    opacity: 0.8;
+}
