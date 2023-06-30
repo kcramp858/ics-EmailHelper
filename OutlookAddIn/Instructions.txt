@@ -1,0 +1,17 @@
+Instructions for using the Outlook Add-in:
+
+1. After the add-in has been installed, you will see a new button in the Outlook ribbon named "emailButton".
+
+2. Click on the "emailButton" to open the add-in. This will open a pop-up window.
+
+3. In the pop-up window, you will see two columns. The left column will automatically display the metadata of the currently selected email (from, to, date, subject, body).
+
+4. The right column contains two free-form text boxes. In the top box, enter your explanation or summary of the email body. In the bottom box, enter any tasks or actions you need to take based on the email.
+
+5. Once you have entered your explanation and tasks, click the "submitButton" to save this information. The data will be saved in a structured .json format in the "emailData.json" file.
+
+6. If you wish to close the pop-up without saving any information, click the "cancelButton".
+
+7. Each new submission will be appended to the "emailData.json" file, allowing you to keep track of your email tasks and explanations over time.
+
+Remember, this add-in is offline only and should be installed locally on your computer.

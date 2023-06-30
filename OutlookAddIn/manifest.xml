@@ -1,14 +1,17 @@
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="MailApp">
-  <Id>com.yourdomain.outlookaddin</Id>
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" 
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+           xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" 
+           xsi:type="MailApp">
+  <Id>com.yourdomain.emailMetadata</Id>
   <Version>1.0.0.0</Version>
   <ProviderName>Your Name</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
-  <DisplayName DefaultValue="Outlook Add-in" />
-  <Description DefaultValue="An Outlook Add-in that allows the user to view email metadata and enter explanations and tasks." />
-  <IconUrl DefaultValue="~remoteAppUrl/assets/icons/icon-32.png" />
-  <HighResolutionIconUrl DefaultValue="~remoteAppUrl/assets/icons/icon-128.png" />
-  <SupportUrl DefaultValue="~remoteAppUrl/README.md" />
+  <DisplayName DefaultValue="Email Metadata Add-in" />
+  <Description DefaultValue="An add-in to extract email metadata and save user inputs" />
+  <IconUrl DefaultValue="https://yourdomain.com/icon.png" />
+  <SupportUrl DefaultValue="https://yourdomain.com/support" />
   <Hosts>
     <Host Name="Mailbox" />
   </Hosts>
@@ -20,7 +23,7 @@
   <FormSettings>
     <Form xsi:type="ItemRead">
       <DesktopSettings>
-        <SourceLocation DefaultValue="~remoteAppUrl/taskpane/taskpane.html" />
+        <SourceLocation DefaultValue="https://yourdomain.com/MessageRead.html" />
         <RequestedHeight>250</RequestedHeight>
       </DesktopSettings>
     </Form>
@@ -39,24 +42,28 @@
     <Hosts>
       <Host xsi:type="MailHost">
         <DesktopFormFactor>
-          <FunctionFile resid="commandsJs" />
+          <FunctionFile resid="Commands.Url" />
+          <ExtensionPoint xsi:type="Events">
+            <Event Type="OnNewMessageCompose" FunctionExecution="synchronous" FunctionName="getEmailData" />
+            <Event Type="OnNewAppointmentOrganizer" FunctionExecution="synchronous" FunctionName="getEmailData" />
+          </ExtensionPoint>
           <ExtensionPoint xsi:type="MessageReadCommandSurface">
             <OfficeTab id="TabDefault">
               <Group id="msgReadGroup">
-                <Label resid="groupLabel" />
-                <Control xsi:type="Button" id="msgReadOpenPaneButton">
-                  <Label resid="paneButtonLabel" />
+                <Label resid="GroupLabel" />
+                <Control xsi:type="Button" id="emailButton">
+                  <Label resid="ButtonLabel" />
                   <Supertip>
-                    <Title resid="paneButtonLabel" />
-                    <Description resid="paneButtonTooltip" />
+                    <Title resid="SuperTipTitle" />
+                    <Description resid="SuperTipDescription" />
                   </Supertip>
                   <Icon>
-                    <bt:Image size="16" resid="icon-16" />
-                    <bt:Image size="32" resid="icon-32" />
-                    <bt:Image size="80" resid="icon-80" />
+                    <bt:Image size="16" resid="Icon.16x16" />
+                    <bt:Image size="32" resid="Icon.32x32" />
+                    <bt:Image size="80" resid="Icon.80x80" />
                   </Icon>
                   <Action xsi:type="ShowTaskpane">
-                    <SourceLocation resid="taskpaneHtml" />
+                    <SourceLocation resid="MessageRead.Url" />
                   </Action>
                 </Control>
               </Group>
@@ -67,21 +74,23 @@
     </Hosts>
     <Resources>
       <bt:Images>
-        <bt:Image id="icon-16" DefaultValue="~remoteAppUrl/assets/icons/icon-16.png" />
-        <bt:Image id="icon-32" DefaultValue="~remoteAppUrl/assets/icons/icon-32.png" />
-        <bt:Image id="icon-80" DefaultValue="~remoteAppUrl/assets/icons/icon-80.png" />
+        <bt:Image id="Icon.16x16" DefaultValue="https://yourdomain.com/icon16.png" />
+        <bt:Image id="Icon.32x32" DefaultValue="https://yourdomain.com/icon32.png" />
+        <bt:Image id="Icon.80x80" DefaultValue="https://yourdomain.com/icon80.png" />
       </bt:Images>
       <bt:Urls>
-        <bt:Url id="commandsJs" DefaultValue="~remoteAppUrl/commands/commands.js" />
-        <bt:Url id="taskpaneHtml" DefaultValue="~remoteAppUrl/taskpane/taskpane.html" />
+        <bt:Url id="Commands.Url" DefaultValue="https://yourdomain.com/Commands.html" />
+        <bt:Url id="MessageRead.Url" DefaultValue="https://yourdomain.com/MessageRead.html" />
       </bt:Urls>
       <bt:ShortStrings>
-        <bt:String id="groupLabel" DefaultValue="Email Metadata and Tasks" />
-        <bt:String id="paneButtonLabel" DefaultValue="Show Email Metadata and Tasks" />
+        <bt:String id="GroupLabel" DefaultValue="Email Metadata" />
+        <bt:String id="ButtonLabel" DefaultValue="Show Metadata" />
+        <bt:String id="SuperTipTitle" DefaultValue="Show Metadata" />
       </bt:ShortStrings>
       <bt:LongStrings>
-        <bt:String id="paneButtonTooltip" DefaultValue="Click to view email metadata and enter explanations and tasks." />
+        <bt:String id="SuperTipDescription" DefaultValue="Click to show the email metadata and enter your notes and tasks." />
       </bt:LongStrings>
     </Resources>
   </VersionOverrides>
 </OfficeApp>
+```
