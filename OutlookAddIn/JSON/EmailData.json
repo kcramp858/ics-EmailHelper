@@ -1,0 +1,17 @@
+{
+  "emailData": [
+    {
+      "from": "",
+      "to": "",
+      "date": "",
+      "subject": "",
+      "body": ""
+    }
+  ],
+  "userInput": [
+    {
+      "explanation": "",
+      "tasks": ""
+    }
+  ]
+}

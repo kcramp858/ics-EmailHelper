@@ -1,17 +1,26 @@
 Instructions for using the Outlook Add-in:
 
-1. After the add-in has been installed, you will see a new button in the Outlook ribbon named "emailButton".
+1. Install the Add-in:
+   - Copy the entire 'OutlookAddIn' folder to your local machine.
+   - Open Outlook, click on 'File' -> 'Options' -> 'Add-Ins'.
+   - At the bottom of the window, in the 'Manage' drop-down, select 'COM Add-ins', and click 'Go...'.
+   - Click 'Add...', navigate to the 'OutlookAddIn' folder, and select the 'manifest.xml' file.
+   - Click 'OK' to close the dialogs. The add-in should now be installed.
 
-2. Click on the "emailButton" to open the add-in. This will open a pop-up window.
+2. Using the Add-in:
+   - Open an email in Outlook.
+   - Click on the new button in the ribbon labeled 'Show Email Data'.
+   - A pop-up will appear with two columns. The left column displays the email metadata (from, to, date, subject, body). The right column has two free-form text boxes.
+   - In the top text box, enter your explanation of the email body.
+   - In the bottom text box, enter tasks derived from the email body.
+   - Click 'Submit' to save the information. It will be saved in the 'EmailData.json' file in the 'OutlookAddIn' folder.
+   - Click 'Cancel' to close the pop-up without saving.
 
-3. In the pop-up window, you will see two columns. The left column will automatically display the metadata of the currently selected email (from, to, date, subject, body).
+3. Using the LLM Interpretation Feature:
+   - Open an email in Outlook.
+   - Click on the new button in the ribbon labeled 'Show LLM Interpretation'.
+   - A pop-up will appear showing the email data and the local LLM's interpretation of the email.
+   - The interpretation is generated based on the email data and a pre-defined prompt.
+   - The interpretation is displayed in the pop-up and also saved in the 'LLMInterpretation.json' file in the 'OutlookAddIn' folder.
 
-4. The right column contains two free-form text boxes. In the top box, enter your explanation or summary of the email body. In the bottom box, enter any tasks or actions you need to take based on the email.
-
-5. Once you have entered your explanation and tasks, click the "submitButton" to save this information. The data will be saved in a structured .json format in the "emailData.json" file.
-
-6. If you wish to close the pop-up without saving any information, click the "cancelButton".
-
-7. Each new submission will be appended to the "emailData.json" file, allowing you to keep track of your email tasks and explanations over time.
-
-Remember, this add-in is offline only and should be installed locally on your computer.
+Please note: This add-in is offline only and should be installed locally on your computer.

@@ -1,7 +1,0 @@
-The "emailData.json" file will initially be an empty array. As the user interacts with the add-in, new entries will be appended to this array. Each entry will be an object with fields for the email metadata, explanation, and tasks.
-
-Here is the initial state of the "emailData.json" file:
-
-```json
-[]
-```

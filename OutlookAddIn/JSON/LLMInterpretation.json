@@ -1,0 +1,14 @@
+{
+  "LLMInterpretation": [
+    {
+      "emailData": {
+        "from": "",
+        "to": "",
+        "date": "",
+        "subject": "",
+        "body": ""
+      },
+      "interpretation": ""
+    }
+  ]
+}

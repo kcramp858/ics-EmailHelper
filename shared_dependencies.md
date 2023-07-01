@@ -1,13 +1,23 @@
-1. "manifest.xml": This file will contain the configuration for the add-in, including the button's id ("emailButton") and the script files it uses ("MessageRead.js", "Popup.js", "SaveData.js").
+1. Exported Variables:
+   - `emailData`: This variable will hold the email metadata (from, to, date, subject, body).
+   - `userInput`: This variable will hold the user's explanation of the email body and tasks derived from the email body.
+   - `LLMInterpretation`: This variable will hold the local LLM's interpretation of the email.
 
-2. "MessageRead.js": This script will contain the function to read the email metadata. It will use the Office.js library and will export a function named "getEmailData".
+2. Data Schemas:
+   - `EmailData.json`: This JSON file will follow a schema that includes fields for from, to, date, subject, and body of the email.
+   - `LLMInterpretation.json`: This JSON file will follow a schema that includes fields for the email data and the LLM's interpretation.
 
-3. "Popup.js": This script will handle the creation and interaction with the popup. It will import the "getEmailData" function from "MessageRead.js". It will use DOM element ids ("emailMetadata", "explanationBox", "taskBox", "cancelButton", "submitButton") and will export a function named "showPopup".
+3. ID Names of DOM Elements:
+   - `emailMetadata`: This ID will be used for the left column of the pop-up that displays the email metadata.
+   - `userInputArea`: This ID will be used for the top free-form text box where the user enters an explanation of the email body.
+   - `taskArea`: This ID will be used for the bottom free-form text box where the user enters tasks derived from the email body.
+   - `LLMOutput`: This ID will be used for the area that displays the LLM's interpretation of the email.
 
-4. "SaveData.js": This script will handle saving the data to the .json file. It will import the "showPopup" function from "Popup.js". It will use the "emailData.json" file and will export a function named "saveData".
+4. Message Names:
+   - `showPopup`: This message will be sent when the user clicks the button in the ribbon to show the pop-up.
+   - `submitData`: This message will be sent when the user clicks the submit button in the pop-up.
 
-5. "Popup.css", "Button.css", "TextBox.css": These style files will be used by "Popup.js" to style the popup, buttons, and text boxes. They will use the same DOM element ids as "Popup.js".
-
-6. "Instructions.txt": This file will contain instructions on how to use the add-in. It will reference the "emailButton" id and the "showPopup" function.
-
-7. "emailData.json": This file will be used by "SaveData.js" to store the email data. It will follow a schema that includes fields for the email metadata, explanation, and tasks.
+5. Function Names:
+   - `showPopup()`: This function will be triggered when the `showPopup` message is received.
+   - `submitData()`: This function will be triggered when the `submitData` message is received.
+   - `interpretEmail()`: This function will take the email data as an input, insert that data into a pre-defined prompt, and then show the output in the new pop-up window.
