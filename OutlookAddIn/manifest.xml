@@ -3,16 +3,15 @@
 <OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" 
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
            xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" 
-           xmlns:mailappor="http://schemas.microsoft.com/office/mailappversionoverrides/1.0" 
            xsi:type="MailApp">
-
   <Id>com.yourdomain.outlookaddin</Id>
   <Version>1.0.0.0</Version>
   <ProviderName>Your Name</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="Outlook Add-in" />
-  <Description DefaultValue="An Outlook Add-in that helps interpret emails" />
-
+  <Description DefaultValue="An Outlook Add-in" />
+  <IconUrl DefaultValue="~remoteAppUrl/Images/Icon.png" />
+  <SupportUrl DefaultValue="~remoteAppUrl/Support.html" />
   <Hosts>
     <Host Name="Mailbox" />
   </Hosts>
@@ -24,7 +23,19 @@
   <FormSettings>
     <Form xsi:type="ItemRead">
       <DesktopSettings>
-        <SourceLocation DefaultValue="~remoteAppUrl/HTML/Office.html" />
+        <SourceLocation DefaultValue="~remoteAppUrl/HTML/Popup.html" />
+        <RequestedHeight>250</RequestedHeight>
+      </DesktopSettings>
+    </Form>
+    <Form xsi:type="ItemRead">
+      <DesktopSettings>
+        <SourceLocation DefaultValue="~remoteAppUrl/HTML/LLMInterpretation.html" />
+        <RequestedHeight>250</RequestedHeight>
+      </DesktopSettings>
+    </Form>
+    <Form xsi:type="ItemRead">
+      <DesktopSettings>
+        <SourceLocation DefaultValue="~remoteAppUrl/HTML/ReplyTemplate.html" />
         <RequestedHeight>250</RequestedHeight>
       </DesktopSettings>
     </Form>
@@ -49,10 +60,10 @@
               <Group id="msgReadGroup">
                 <Label resid="groupLabel" />
                 <Control xsi:type="Button" id="msgReadOpenPaneButton">
-                  <Label resid="paneButtonLabel" />
+                  <Label resid="paneReadButtonLabel" />
                   <Supertip>
-                    <Title resid="paneSuperTipTitle" />
-                    <Description resid="paneSuperTipDescription" />
+                    <Title resid="paneReadSuperTipTitle" />
+                    <Description resid="paneReadSuperTipDescription" />
                   </Supertip>
                   <Icon>
                     <bt:Image size="16" resid="icon16" />
@@ -60,7 +71,7 @@
                     <bt:Image size="80" resid="icon80" />
                   </Icon>
                   <Action xsi:type="ShowTaskpane">
-                    <SourceLocation resid="messageRead" />
+                    <SourceLocation resid="readPaneUrl" />
                   </Action>
                 </Control>
               </Group>
@@ -71,21 +82,21 @@
     </Hosts>
     <Resources>
       <bt:Images>
-        <bt:Image id="icon16" DefaultValue="~remoteAppUrl/Assets/icon16.png" />
-        <bt:Image id="icon32" DefaultValue="~remoteAppUrl/Assets/icon32.png" />
-        <bt:Image id="icon80" DefaultValue="~remoteAppUrl/Assets/icon80.png" />
+        <bt:Image id="icon16" DefaultValue="~remoteAppUrl/Images/Icon16.png" />
+        <bt:Image id="icon32" DefaultValue="~remoteAppUrl/Images/Icon32.png" />
+        <bt:Image id="icon80" DefaultValue="~remoteAppUrl/Images/Icon80.png" />
       </bt:Images>
       <bt:Urls>
         <bt:Url id="functionFile" DefaultValue="~remoteAppUrl/Scripts/OfficeScripts.js" />
-        <bt:Url id="messageRead" DefaultValue="~remoteAppUrl/HTML/Popup.html" />
+        <bt:Url id="readPaneUrl" DefaultValue="~remoteAppUrl/HTML/Popup.html" />
       </bt:Urls>
       <bt:ShortStrings>
-        <bt:String id="groupLabel" DefaultValue="Email Interpretation" />
-        <bt:String id="paneButtonLabel" DefaultValue="Interpret Email" />
-        <bt:String id="paneSuperTipTitle" DefaultValue="Interpret Email" />
+        <bt:String id="groupLabel" DefaultValue="My Add-in Group" />
+        <bt:String id="paneReadButtonLabel" DefaultValue="Show Pane" />
+        <bt:String id="paneReadSuperTipTitle" DefaultValue="Show Pane" />
       </bt:ShortStrings>
       <bt:LongStrings>
-        <bt:String id="paneSuperTipDescription" DefaultValue="Click to view the interpretation of the email." />
+        <bt:String id="paneReadSuperTipDescription" DefaultValue="Click to show the pane." />
       </bt:LongStrings>
     </Resources>
   </VersionOverrides>

@@ -1,17 +1,9 @@
+The file "OutlookAddIn/JSON/EmailData.json" is a JSON file. It doesn't contain executable code, but rather structured data. Here is an example of how the initial empty JSON file might look:
+
+```json
 {
-  "emailData": [
-    {
-      "from": "",
-      "to": "",
-      "date": "",
-      "subject": "",
-      "body": ""
-    }
-  ],
-  "userInput": [
-    {
-      "explanation": "",
-      "tasks": ""
-    }
-  ]
+  "emailData": []
 }
+```
+
+This JSON file starts with an empty array under the key "emailData". As the user interacts with the add-in, new entries will be appended to this array. Each entry will be an object containing the email metadata and user input, structured according to the `EmailDataSchema` and `UserInputSchema`.

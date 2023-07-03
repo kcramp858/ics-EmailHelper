@@ -6,7 +6,7 @@
 </head>
 <body>
     <div id="popupContainer">
-        <div id="emailMetadata" class="column">
+        <div id="emailMetadata">
             <h2>Email Metadata</h2>
             <p id="from"></p>
             <p id="to"></p>
@@ -14,17 +14,13 @@
             <p id="subject"></p>
             <p id="body"></p>
         </div>
-        <div id="userInput" class="column">
+        <div id="userInput">
             <h2>User Input</h2>
-            <textarea id="userInputArea" placeholder="Enter explanation of the email body here..."></textarea>
-            <textarea id="taskArea" placeholder="Enter tasks derived from the email body here..."></textarea>
-        </div>
-        <div id="LLMOutput" class="column">
-            <h2>LLM Interpretation</h2>
-            <p id="interpretation"></p>
+            <textarea id="userExplanation" placeholder="Enter explanation of the email body here..."></textarea>
+            <textarea id="userTasks" placeholder="Enter tasks derived from the email body here..."></textarea>
         </div>
     </div>
-    <button onclick="submitData()">Submit</button>
-    <button onclick="cancel()">Cancel</button>
+    <button id="cancelButton" onclick="cancel()">Cancel</button>
+    <button id="submitButton" onclick="submit()">Submit</button>
 </body>
 </html>

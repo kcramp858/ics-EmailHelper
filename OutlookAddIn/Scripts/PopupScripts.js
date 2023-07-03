@@ -1,62 +1,60 @@
+```javascript
 // Importing required dependencies
 const fs = require('fs');
 const path = require('path');
 
-// Function to show the popup
-function showPopup(emailData) {
-    // Get the DOM elements
-    const emailMetadata = document.getElementById('emailMetadata');
-    const userInputArea = document.getElementById('userInputArea');
-    const taskArea = document.getElementById('taskArea');
+// Function to display the popup
+function displayPopup() {
+    // Get the email metadata
+    let emailData = Office.context.mailbox.item;
 
-    // Populate the email metadata
-    emailMetadata.innerHTML = `
-        <p>From: ${emailData.from}</p>
-        <p>To: ${emailData.to}</p>
-        <p>Date: ${emailData.date}</p>
-        <p>Subject: ${emailData.subject}</p>
-        <p>Body: ${emailData.body}</p>
+    // Populate the left column with email metadata
+    document.getElementById('emailMetadata').innerHTML = `
+        From: ${emailData.from}
+        To: ${emailData.to}
+        Date: ${emailData.dateTimeCreated}
+        Subject: ${emailData.subject}
+        Body: ${emailData.body}
     `;
 
-    // Clear the user input and task areas
-    userInputArea.value = '';
-    taskArea.value = '';
-
-    // Show the popup
-    $('#popup').modal('show');
+    // Clear the user input fields
+    document.getElementById('userExplanation').value = '';
+    document.getElementById('userTasks').value = '';
 }
 
-// Function to submit the data
-function submitData() {
-    // Get the DOM elements
-    const userInputArea = document.getElementById('userInputArea');
-    const taskArea = document.getElementById('taskArea');
-
-    // Get the user input and tasks
-    const userInput = userInputArea.value;
-    const tasks = taskArea.value;
-
-    // Create the data object
-    const data = {
-        emailData,
-        userInput,
-        tasks
+// Function to save the data to the .json file
+function saveDataToJson() {
+    // Get the user input
+    let userInput = {
+        explanation: document.getElementById('userExplanation').value,
+        tasks: document.getElementById('userTasks').value
     };
 
-    // Append the data to the JSON file
-    fs.appendFile(path.join(__dirname, '../JSON/EmailData.json'), JSON.stringify(data, null, 2), (err) => {
-        if (err) throw err;
-        console.log('Data saved to JSON file.');
-    });
+    // Combine the email data and user input
+    let combinedData = {
+        emailData: Office.context.mailbox.item,
+        userInput: userInput
+    };
 
-    // Hide the popup
-    $('#popup').modal('hide');
+    // Read the existing .json file
+    let jsonData = fs.readFileSync(path.join(__dirname, '../JSON/EmailData.json'));
+
+    // Parse the .json file
+    let data = JSON.parse(jsonData);
+
+    // Append the new submission to the .json file
+    data.push(combinedData);
+
+    // Write the updated data back to the .json file
+    fs.writeFileSync(path.join(__dirname, '../JSON/EmailData.json'), JSON.stringify(data));
 }
 
-// Event listener for the showPopup message
+// Event listener for the 'showPopup' message
 Office.initialize = function() {
-    Office.context.mailbox.addHandlerAsync(Office.EventType.ItemChanged, showPopup);
+    Office.context.mailbox.addHandlerAsync(Office.EventType.DialogMessageReceived, showPopup);
 };
 
-// Event listener for the submitData message
-document.getElementById('submit').addEventListener('click', submitData);
+// Event listener for the 'saveData' message
+document.getElementById('submit').addEventListener('click', saveDataToJson);
+document.getElementById('cancel').addEventListener('click', displayPopup);
+```
