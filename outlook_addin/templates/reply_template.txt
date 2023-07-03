@@ -1,0 +1,11 @@
+#INSTRUCTION:
+
+{user_instruction}
+
+#CONTEXT
+
+{email_body}
+
+#TASK
+
+{user_task}

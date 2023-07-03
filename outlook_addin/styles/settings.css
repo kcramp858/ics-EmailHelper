@@ -1,0 +1,36 @@
+#settingsMenu {
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+#settingsMenu label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+#settingsMenu input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#settingsMenu button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#settingsMenu button:hover {
+    background-color: #45a049;
+}
