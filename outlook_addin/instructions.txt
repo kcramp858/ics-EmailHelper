@@ -1,0 +1,21 @@
+# Outlook Add-in Instructions
+
+## Installation
+1. Download the add-in files and save them to a local directory on your computer.
+2. Open Outlook and click on the `File` tab in the ribbon.
+3. Select `Options` > `Add-Ins` > `COM Add-ins` > `Add`.
+4. Navigate to the local directory where you saved the add-in files and select the `manifest.xml` file.
+5. Click `OK` to install the add-in.
+
+## Usage
+1. Once installed, you will see new buttons in the Outlook ribbon.
+2. Click on the `Show Email Data` button to open a pop-up window displaying the metadata of the currently selected email on the left side and two free-form text boxes on the right side.
+3. In the top text box, enter an explanation of the email body. In the bottom text box, enter tasks derived from the email body.
+4. Click `Submit` to save the information in a structured .json format to `email_data.json`. Click `Cancel` to close the pop-up without saving.
+5. Click on the `Interpret Email` button to open a pop-up window displaying the email data and a local LLM's interpretation of the email.
+6. Click on the `Reply with Template` button to create a reply to the currently selected email using a specific template. You will be prompted to enter instructions and tasks in the provided fields.
+7. Click on the `Save Email` button to save a copy of the entire email file to a specific directory in a root directory. The root directory can be set in the settings menu.
+8. To change the root directory, click on the `Settings` button in the ribbon, enter the new root directory, and click `Update`.
+
+## Troubleshooting
+If you encounter the error message "This app can't be installed. The manifest XML file isn't valid. 'bt' is an undeclared prefix. Line 35, position 8..", please ensure that the `manifest.xml` file is correctly formatted and try again. If the problem persists, contact your system administrator.
